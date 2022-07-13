@@ -19,11 +19,16 @@ set mouse=a
 
 call plug#begin()
 Plug 'https://github.com/vim-airline/vim-airline' "statusbar
+Plug 'https://github.com/dmerejkowsky/vim-ale'
+Plug 'https://github.com/pangloss/vim-javascript'
+Plug 'https://github.com/leafgarland/typescript-vim'
+Plugin 'leafgarland/typescript-vim'
+Plug 'yuezk/vim-js' "jsx highlightining
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'https://github.com/preservim/nerdtree' "nerdterr
 Plug 'https://github.com/ap/vim-css-color' "css color
 Plug 'https://github.com/rafi/awesome-vim-colorschemes' "color schemes
-Plug 'https://github.com/ryanoasis/vim-devicons' "dev tools
-Plug 'https://github.com/tc50cal/vim-terminal' "vim terminal
+Plug 'ryanoasis/vim-devicons' "vim icons
 Plug 'https://github.com/terryma/vim-multiple-cursors' "multiple cursors
 Plug 'https://github.com/tpope/vim-commentary' "vim commentacolorschemery
 Plug 'https://github.com/preservim/tagbar' "tag
@@ -33,14 +38,10 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim' "fuzzy finder
 Plug 'https://github.com/prettier/vim-prettier' "pritter
 Plug 'https://github.com/jiangmiao/auto-pairs' " auto brackets
-Plug 'https://github.com/mxw/vim-jsx' " jsx syntax
 Plug 'https://github.com/sindrets/diffview.nvim' " gitdiff
 Plug 'https://github.com/tpope/vim-fugitive' " git fugitive
-Plug 'https://github.com/neoclide/vim-jsx-improve' 
 Plug 'https://github.com/kkvh/vim-docker-tools'
-Plug 'https://github.com/dense-analysis/ale' " syntax tool
 Plug 'vimwiki/vimwiki' " vimwiki
-Plug 'https://github.com/maxmellon/vim-jsx-pretty' " jsx pretty
 call plug#end()
 
 
@@ -53,16 +54,15 @@ let mapleader = " "
 nmap <leader>hk :vsplit ~/.vim/hotkeys<cr>                                                          
 nmap <leader>gd <plug>(coc-definition)                                                              
 nmap <leader>gr <plug>(coc-references)                                                              
-nmap <leader><leader>t :nerdtree<cr>
-nmap <leader>t :nerdtreetoggle<cr>
-nmap <leader>r :nerdtreefocus<cr>
+nmap <leader><leader>t :NERDTree<cr>
+nmap <leader>t :NERDTreeToggle<cr>
+nmap <leader>r :NERDTreeFocus<cr>
 nmap <leader><leader>p :prettier<cr>                                                                
 nmap <leader><leader>g :gofmt<cr>                                                                   
 nmap <leader><leader>b :black<cr>                                                                   
 nmap <leader><leader>u :undotreetoggle<cr>                                                          
-nmap <leader>z :terminalsplit zsh<cr>
 " files (runs $fzf_default_command if defined)                                                      
-nmap <leader><leader>f :files<cr>                                                                   
+nmap <leader><leader>f :Files<cr>                                                                   
 nmap <leader><leader><leader>g :gometalinter<cr>  
 nmap <f8> :tagbartoggle<cr>
 nmap <c-s> :w<cr>
@@ -73,9 +73,10 @@ nnoremap <leader><tab><tab> :bprevious<cr>
 
 
 
+
 let g:nerdtreedirarrowexpandable="+"
 let g:nerdtreedirarrowcollapsiblee="-"
-:colorscheme onedark
+:colorscheme gruvbox
 
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
@@ -122,5 +123,4 @@ endif
 
 " coc-vim tab settings end
 " --------------------------------------------------------
-    return shops.map(reconstructshop)
 
