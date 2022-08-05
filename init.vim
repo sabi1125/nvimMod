@@ -18,11 +18,11 @@ set mouse=a
 " plugins
 
 call plug#begin()
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'https://github.com/vim-airline/vim-airline' "statusbar
+Plug 'nvim-lua/plenary.nvim'
 Plug 'https://github.com/dmerejkowsky/vim-ale'
 Plug 'https://github.com/pangloss/vim-javascript'
-Plug 'https://github.com/leafgarland/typescript-vim'
-Plugin 'leafgarland/typescript-vim'
 Plug 'yuezk/vim-js' "jsx highlightining
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'https://github.com/preservim/nerdtree' "nerdterr
@@ -58,6 +58,7 @@ nmap <leader><leader>t :NERDTree<cr>
 nmap <leader>t :NERDTreeToggle<cr>
 nmap <leader>r :NERDTreeFocus<cr>
 nmap <leader><leader>p :prettier<cr>                                                                
+nmap <leader>f :tabe<cr>                                                                
 nmap <leader><leader>g :gofmt<cr>                                                                   
 nmap <leader><leader>b :black<cr>                                                                   
 nmap <leader><leader>u :undotreetoggle<cr>                                                          
@@ -66,6 +67,10 @@ nmap <leader><leader>f :Files<cr>
 nmap <leader><leader><leader>g :gometalinter<cr>  
 nmap <f8> :tagbartoggle<cr>
 nmap <c-s> :w<cr>
+nmap <leader>q 1gt<cr>
+nmap <leader>e 2gt<cr>
+nmap <leader>r 3gt<cr>
+nmap <leader>t 4gt<cr>
 nnoremap <leader><leader>c :call nerdcomment(0,"toggle")<cr>                                        
 nnoremap <leader><leader>c :call nerdcomment(0,"toggle")<cr>                                        
 nnoremap <leader><tab> :bnext<cr>                                                                   
@@ -73,10 +78,10 @@ nnoremap <leader><tab><tab> :bprevious<cr>
 
 
 
-
+let g:airline_powerline_fonts = 1
 let g:nerdtreedirarrowexpandable="+"
 let g:nerdtreedirarrowcollapsiblee="-"
-:colorscheme gruvbox
+:colorscheme dracula 
 
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
