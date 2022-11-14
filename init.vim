@@ -14,6 +14,7 @@ set undofile
 set incsearch                                                                                       
 set relativenumber                                                                                  
 set cursorline     
+set scrolloff=999
 set mouse=a
 " plugins
 
@@ -42,6 +43,7 @@ Plug 'https://github.com/sindrets/diffview.nvim' " gitdiff
 Plug 'https://github.com/tpope/vim-fugitive' " git fugitive
 Plug 'https://github.com/kkvh/vim-docker-tools'
 Plug 'vimwiki/vimwiki' " vimwiki
+Plug 'tribela/vim-transparent'
 call plug#end()
 
 
@@ -67,10 +69,8 @@ nmap <leader><leader>f :Files<cr>
 nmap <leader><leader><leader>g :gometalinter<cr>  
 nmap <f8> :tagbartoggle<cr>
 nmap <c-s> :w<cr>
-nmap <leader>q 1gt<cr>
-nmap <leader>e 2gt<cr>
-nmap <leader>r 3gt<cr>
-nmap <leader>t 4gt<cr>
+nmap <leader>q :tabprevious<cr>
+nmap <leader>e :tabnext<cr>
 nnoremap <leader><leader>c :call nerdcomment(0,"toggle")<cr>                                        
 nnoremap <leader><leader>c :call nerdcomment(0,"toggle")<cr>                                        
 nnoremap <leader><tab> :bnext<cr>                                                                   
@@ -81,7 +81,8 @@ nnoremap <leader><tab><tab> :bprevious<cr>
 let g:airline_powerline_fonts = 1
 let g:nerdtreedirarrowexpandable="+"
 let g:nerdtreedirarrowcollapsiblee="-"
-:colorscheme dracula 
+
+:colorscheme gruvbox 
 
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
