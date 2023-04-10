@@ -4,7 +4,6 @@ set laststatus=2
 set belloff=all                                                                                     
 set tabstop=2 softtabstop=2                                                                         
 set shiftwidth=2                                                                                    
-set expandtab                                                                                       
 set smartindent                                                                                     
 set nu                                                                                              
 set nowrap                                                                                          
@@ -14,11 +13,12 @@ set undofile
 set incsearch                                                                                       
 set relativenumber                                                                                  
 set cursorline     
-set scrolloff=999
 set mouse=a
+set expandtab
 " plugins
 
 call plug#begin()
+Plug 'ryanoasis/vim-devicons'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'https://github.com/vim-airline/vim-airline' "statusbar
 Plug 'nvim-lua/plenary.nvim'
@@ -82,13 +82,13 @@ let g:airline_powerline_fonts = 1
 let g:nerdtreedirarrowexpandable="+"
 let g:nerdtreedirarrowcollapsiblee="-"
 
-:colorscheme gruvbox 
+:colorscheme sonokai
 
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " --------------------------------------------------------
 " settings start
-
+"
 set completeopt=longest,menuone
 
 " settings end
@@ -129,4 +129,5 @@ endif
 
 " coc-vim tab settings end
 " --------------------------------------------------------
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
