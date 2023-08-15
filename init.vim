@@ -18,7 +18,7 @@ set expandtab
 " plugins
 
 call plug#begin()
-Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'tpope/vim-surround'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'ryanoasis/vim-devicons'
@@ -66,11 +66,13 @@ nmap <leader><leader>t :NERDTree<cr>
 nmap <leader>t :NERDTreeToggle<cr>
 nmap <leader>r :NERDTreeFocus<cr>
 nmap <leader><leader>p :prettier<cr>                                                                
+
 "new tab
 nmap <leader>f :tabe<cr>
 nmap <leader><leader>g :gofmt<cr>                                                                   
 nmap <leader><leader>b :black<cr>                                                                   
 nmap <leader><leader>u :undotreetoggle<cr>                                                          
+
 " files (runs $fzf_default_command if defined)                                                      
 nmap <leader><leader>f :Files<cr>                                                                   
 nmap <leader><leader><leader>g :gometalinter<cr>  
@@ -78,8 +80,14 @@ nmap <f8> :tagbartoggle<cr>
 nmap <c-s> :w<cr>
 nmap <leader>q :tabprevious<cr>
 nmap <leader>e :tabnext<cr>
+
+" vim-surround
+nmap <leader>w yss
+nmap <leader>a ySS
+
 nnoremap <leader><tab> :bnext<cr>                                                                   
 nnoremap <leader><tab><tab> :bprevious<cr>
+
 
 
 let g:airline_powerline_fonts = 1
