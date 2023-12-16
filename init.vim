@@ -1,4 +1,3 @@
-set noswapfile
 set background=dark                                                                                 
 set laststatus=2                                                                                    
 set belloff=all                                                                                     
@@ -15,9 +14,13 @@ set relativenumber
 set cursorline     
 set mouse=a
 set expandtab
-" plugins
+set nohlsearch
+set clipboard=unnamedplus
+set noswapfile
 
+" plugins
 call plug#begin()
+Plug 'voldikss/vim-floaterm'
 Plug 'tpope/vim-surround'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -50,10 +53,26 @@ Plug 'https://github.com/kkvh/vim-docker-tools'
 Plug 'vimwiki/vimwiki' " vimwiki
 plug 'tribela/vim-transparent'
 plug 'hachy/eva01.vim', { 'branch': 'main' }
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+Plug 'APZelos/blamer.nvim'
+
+if has('nvim')
+  function! UpdateRemotePlugins(...)
+    " Needed to refresh runtime files
+    let &rtp=&rtp
+    UpdateRemotePlugins
+  endfunction
+
+  Plug 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
+else
+  Plug 'gelguy/wilder.nvim'
+
+  " To use Python remote plugin features in Vim, can be skipped
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 call plug#end()
-
-
-
+call wilder#setup({'modes': [':', '/', '?']})
 
 
 let mapleader = " "
@@ -85,9 +104,25 @@ nmap <leader>e :tabnext<cr>
 nmap <leader>w yss
 nmap <leader>a ySS
 
+" Float Term
+nmap <leader>tm :FloatermNew<cr>
+
 nnoremap <leader><tab> :bnext<cr>                                                                   
 nnoremap <leader><tab><tab> :bprevious<cr>
 
+" Blamer config
+let g:blamer_enabled = 1
+let g:blamer_delay = 400
+let g:blamer_show_in_visual_modes = 0
+let g:blamer_show_in_insert_modes = 0
+
+" show hidden files for NERDTree
+let g:NERDTreeShowHidden=1
+
+
+" Markdown preview config
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 1
 
 
 let g:airline_powerline_fonts = 1
@@ -103,7 +138,6 @@ let g:nerdtreedirarrowcollapsiblee="-"
 
     colorscheme everforest
     let g:lightline = {'colorscheme' : 'everforest'}
-
 
 
 :colorscheme everforest 
@@ -162,7 +196,6 @@ vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]]
 
 vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
-vim.opt.listchars:append "tab:⋅"
 vim.opt.listchars:append "eol:↴"
 
 require("indent_blankline").setup {
